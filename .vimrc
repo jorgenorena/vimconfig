@@ -226,5 +226,6 @@ vmap <Leader>ss <Plug>SendDownV
 
 " splits
 " nmap <Leader>sh 
-nmap <Leader>sx :botright terminal<CR>
-nmap <Leader>sj :botright terminal /root/julia/julia-1.10.2/bin/julia<CR>
+nmap <Leader>sxx :botright terminal<CR>
+nmap <Leader>sxj :botright terminal ++noclose /root/julia/julia-current/bin/julia %<CR>
+nmap <Leader>sj :botright terminal /root/julia/julia-current/bin/julia<CR>
