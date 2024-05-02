@@ -71,6 +71,15 @@ Plugin 'derekwyatt/vim-protodef'
 " sendtoterm to send text to another window (like a terminal or REPL)
 Plugin 'karoliskoncevicius/vim-sendtowindow'
 
+" Change surrounding quotes, parenthesis, tags
+Plugin 'tpope/vim-surround'
+
+" For latex support
+Plugin 'lervag/vimtex'
+
+" Multiple cursors!
+Plugin 'mg979/vim-visual-multi'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -164,6 +173,7 @@ let $BASH_ENV="~/.vim/vim_bash"
 " --------------------------------------------
 
 set nu		" Enable line numbers
+set relativenumber " Relative line numbers
 syntax on	" Enable syntax highlighting
 
 " How many columns of whitespace a \t is worth
@@ -174,6 +184,12 @@ set shiftwidth=2
 
 " Use spaces when tabbing
 set expandtab
+set autoindent
+
+set cursorline  " highlight cursor
+set wrap        " wrap long lines
+set breakindent " indentation included in line wrapping
+set linebreak
 
 set incsearch	" Enable incremental search
 set hlsearch	" Enable highlight search
@@ -225,7 +241,16 @@ nmap <Leader>ss <Plug>SendDown
 vmap <Leader>ss <Plug>SendDownV
 
 " splits
-" nmap <Leader>sh 
+nmap <Leader>sh :split<CR>
+nmap <Leader>sv :vsplit<CR>
+nmap <Leader>sq :close<CR>
+nmap <Leader>s<Up> <C-w><Up>
+nmap <Leader>s<Down> <C-w><Down>
+nmap <Leader>s<Left> <C-w><Left>
+nmap <Leader>s<Right> <C-w><Right>
 nmap <Leader>sxx :botright terminal<CR>
 nmap <Leader>sxj :botright terminal ++noclose /root/julia/julia-current/bin/julia %<CR>
 nmap <Leader>sj :botright terminal /root/julia/julia-current/bin/julia<CR>
+
+" other
+nmap <Leader>nh :nohl<CR>
