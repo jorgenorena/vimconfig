@@ -104,7 +104,7 @@ let g:tagbar_autofocus = 1
 let g:tagbar_autoshowtag = 1
 
 " Make panel vertical and place on the right
-let g:tagbar_position = 'botright vertical'
+let g:tagbar_position = 'botright horizontal'
 
 " ---------------------------------------------
 " NERDTree configuration
@@ -222,6 +222,7 @@ xmap <Leader>ff <Plug>CtrlSFVwordPath
 xmap <Leader>F <Plug>CtrlSFVwordExec
 " Open search prompt with current word (Normal Mode)
 nmap <Leader>F <Plug>CtrlSFCwordPath
+nnoremap <leader>js :call SelectTexWithinCell()<CR>
 " Open CtrlSF window (Normal Mode)
 nnoremap <Leader>fo :CtrlSFOpen<CR>
 " Toggle CtrlSF window (Normal Mode)
@@ -250,6 +251,7 @@ nmap <Leader>s<Left> <C-w><Left>
 nmap <Leader>s<Right> <C-w><Right>
 nmap <Leader>sxx :botright terminal<CR>
 nmap <Leader>sxj :botright terminal ++noclose /root/julia/julia-current/bin/julia %<CR>
+nmap <leader>sxp :botright terminal ++noclose python %<CR>
 nmap <Leader>sj :botright terminal /root/julia/julia-current/bin/julia<CR>
 
 " other
@@ -258,7 +260,8 @@ nmap <Leader>nh :nohl<CR>
 " convert notebooks to script
 augroup Jupytext
   autocmd!
-  autocmd FileType json nnoremap <buffer> <leader>jw :!jupytext --to=auto:percent %<CR>
+  autocmd FileType json nnoremap <buffer> <leader>jws :!jupytext --to=auto:percent %<CR>
+  autocmd FileType json nnoremap <buffer> <leader>jwm :!jupytext --to=md %<CR>
 augroup END
 
 
@@ -281,3 +284,9 @@ function! SelectTextWithinCell()
 endfunction
 
 nnoremap <leader>js :call SelectTexWithinCell()<CR>
+nnoremap <leader>jd :call SelectTexWithinCell()<CR>jd
+nnoremap <leader>jy :call SelectTexWithinCell()<CR>jy
+nnoremap <leader>jn o# %%
+nnoremap <leader>jm o# %% [markdown]
+
+nnoremap <leader><CR> :call SelectTextWithinCell()<CR><Plug>SendDownV
