@@ -254,3 +254,30 @@ nmap <Leader>sj :botright terminal /root/julia/julia-current/bin/julia<CR>
 
 " other
 nmap <Leader>nh :nohl<CR>
+
+" convert notebooks to script
+augroup Jupytext
+  autocmd!
+  autocmd FileType json nnoremap <buffer> <leader>jw :!jupytext --to=auto:percent %<CR>
+augroup END
+
+
+
+" Work with script cells
+function! SelectTextWithinCell()
+  let l:start_pos = searchpos('^# %%$', 'nb')
+  if l:start_pos[0] == 0
+    echo "No starting marker found"
+    return
+  endif
+
+  let l:end_pos = searchpos('^# %%$', 'n')
+  if l:end_pos[0] == 0
+    echo "No ending marker found"
+    return
+  endif
+
+  execute l:start_pos[0] . ',' . l:end_pos[0] . 'normal! V'
+endfunction
+
+nnoremap <leader>js :call SelectTexWithinCell()<CR>
