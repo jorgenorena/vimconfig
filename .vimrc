@@ -251,7 +251,9 @@ nmap <Leader>s<Left> <C-w><Left>
 nmap <Leader>s<Right> <C-w><Right>
 nmap <Leader>sxx :botright terminal<CR>
 nmap <Leader>sxj :botright terminal ++noclose /root/julia/julia-current/bin/julia %<CR>
+nmap <Leader>sj :botright terminal /root/julia/julia-current/bin/julia <CR>
 nmap <leader>sxp :botright terminal ++noclose python %<CR>
+nmap <leader>sp :botright terminal python<CR>
 nmap <Leader>sj :botright terminal /root/julia/julia-current/bin/julia<CR>
 
 " other
@@ -263,11 +265,11 @@ augroup NotebookConvert
   autocmd FileType json nnoremap <buffer> <leader>jws :!jupytext --to=auto:percent %<CR>
   autocmd FileType json nnoremap <buffer> <leader>jwm :!jupytext --to=md %<CR>
 augroup END
-
-augroup ConvertToNB
+augroup NotebookConvert
   autocmd!
-  autocmd FileType python,julia nnoremap <buffer> <leader>jwn :!jupytext --to=ipynb --update<CR>
+  autocmd FileType python,julia nnoremap <buffer> <leader>jwn :!jupytext --to=ipynb --update %<CR>
 augroup END
+
 
 " Work with script cells
 function! SelectTextWithinCell()
@@ -283,12 +285,13 @@ function! SelectTextWithinCell()
     return
   endif
 
-  execute l:start_pos[0] . ',' . l:end_pos[0] . 'normal! V'
+"  echo l:start_pos[0] . ',' . l:end_pos[0]
+  execute ':normal! ' . (l:start_pos[0] + 1) . 'GV' . (l:end_pos[0] - 1) . 'G'
 endfunction
 
-nnoremap <leader>js :call SelectTexWithinCell()<CR>
-nnoremap <leader>jd :call SelectTexWithinCell()<CR>jd
-nnoremap <leader>jy :call SelectTexWithinCell()<CR>jy
+nnoremap <leader>js :call SelectTextWithinCell()<CR>
+nnoremap <leader>jd :call SelectTextWithinCell()<CR>jd
+nnoremap <leader>jy :call SelectTextWithinCell()<CR>jy
 nnoremap <leader>jn o# %%
 nnoremap <leader>jm o# %% [markdown]
 nnoremap <leader><CR> :call SelectTextWithinCell()<CR><Plug>SendDownV
