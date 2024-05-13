@@ -43,6 +43,7 @@ Plugin 'sjl/badwolf'
 Plugin 'lifepillar/vim-solarized8'
 Plugin 'scheakur/vim-scheakur'
 Plugin 'Badacadabra/vim-archery'
+Plugin 'NLKNguyen/papercolor-theme'
 " Preview colorschemes with :color <name> (tab to see them)
 
 " PolyGlot for language syntax highlighting and indentation
@@ -198,8 +199,8 @@ set termwinsize=12x0	" Set terminal size
 set splitbelow		    " Always split below
 set mouse=a		        " Enable mouse drag on window splits
 
-set background=dark   " Set backgroud
-colorscheme desert    " Set color scheme
+set background=dark    " Set backgroud
+colorscheme PaperColor " Set color scheme
 
 " -------------------------------------------
 " Key mappings
