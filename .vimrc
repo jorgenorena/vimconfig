@@ -258,13 +258,16 @@ nmap <Leader>sj :botright terminal /root/julia/julia-current/bin/julia<CR>
 nmap <Leader>nh :nohl<CR>
 
 " convert notebooks to script
-augroup Jupytext
+augroup NotebookConvert
   autocmd!
   autocmd FileType json nnoremap <buffer> <leader>jws :!jupytext --to=auto:percent %<CR>
   autocmd FileType json nnoremap <buffer> <leader>jwm :!jupytext --to=md %<CR>
 augroup END
 
-
+augroup ConvertToNB
+  autocmd!
+  autocmd FileType python,julia nnoremap <buffer> <leader>jwn :!jupytext --to=ipynb --update<CR>
+augroup END
 
 " Work with script cells
 function! SelectTextWithinCell()
@@ -288,5 +291,4 @@ nnoremap <leader>jd :call SelectTexWithinCell()<CR>jd
 nnoremap <leader>jy :call SelectTexWithinCell()<CR>jy
 nnoremap <leader>jn o# %%
 nnoremap <leader>jm o# %% [markdown]
-
 nnoremap <leader><CR> :call SelectTextWithinCell()<CR><Plug>SendDownV
