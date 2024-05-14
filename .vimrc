@@ -81,6 +81,9 @@ Plugin 'lervag/vimtex'
 " Multiple cursors!
 Plugin 'mg979/vim-visual-multi'
 
+" Status line!
+Plugin 'vim-airline/vim-airline'
+
 call vundle#end()
 filetype plugin indent on
 
