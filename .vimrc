@@ -84,6 +84,9 @@ Plugin 'mg979/vim-visual-multi'
 " Status line!
 Plugin 'vim-airline/vim-airline'
 
+" Which key
+Plugin 'liuchengxu/vim-which-key'
+
 call vundle#end()
 filetype plugin indent on
 
