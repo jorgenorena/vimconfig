@@ -75,6 +75,9 @@ Plugin 'karoliskoncevicius/vim-sendtowindow'
 " Change surrounding quotes, parenthesis, tags
 Plugin 'tpope/vim-surround'
 
+" Comfortably comment out code
+Plugin 'tpope/vim-commentary'
+
 " For latex support
 Plugin 'lervag/vimtex'
 
