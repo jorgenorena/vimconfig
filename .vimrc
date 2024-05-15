@@ -84,9 +84,6 @@ Plugin 'mg979/vim-visual-multi'
 " Status line!
 Plugin 'vim-airline/vim-airline'
 
-" Which key
-Plugin 'liuchengxu/vim-which-key'
-
 call vundle#end()
 filetype plugin indent on
 
@@ -207,6 +204,13 @@ set mouse=a		        " Enable mouse drag on window splits
 
 set background=dark    " Set backgroud
 colorscheme PaperColor " Set color scheme
+
+" -------------------------------------------
+"  Which key
+" -------------------------------------------
+
+" By default timeoutlen is 1000 ms
+set timeoutlen=500
 
 " -------------------------------------------
 " Key mappings
